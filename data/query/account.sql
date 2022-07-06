@@ -15,8 +15,11 @@ OFFSET $2;
 -- UPDATE accounts SET balance  = $2 WHERE id= $1;
 
 
--- name: UpdateAccount :exec
-update accounts set balance = $2 where id $1 RETURNING *;
+-- name: UpdateAccount :one
+UPDATE accounts
+SET balance = $2
+WHERE id = $1
+RETURNING *;
 
 
 -- name: DeleteAccount :exec
